@@ -2,6 +2,8 @@ package calculators;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import types.Double;
+import types.Integer;
 
 public class CoreNumberCalculatorTest {
 
@@ -11,41 +13,41 @@ public class CoreNumberCalculatorTest {
 
     @Test
     public void addDoubleDouble(){
-        assertEquals(3.0, createCoreNumberCalculator().add(1.0, 2.0), 0.001);
+        assertEquals(6.0, (double)createCoreNumberCalculator().add(new Double(2.0), new Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void addDoubleInteger(){
-        assertEquals(3.0, createCoreNumberCalculator().add(1.0, 2), 0.001);
+        assertEquals(6.0, (double)createCoreNumberCalculator().add(new Double(2.0), new Integer(4)).getValue(), 0.001);
     }
 
     @Test
     public void addIntegerDouble(){
-        assertEquals(3.0, createCoreNumberCalculator().add(1, 2.0), 0.001);
+        assertEquals(6.0, (double)createCoreNumberCalculator().add(new Integer(2), new Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void addIntegerIntger(){
-        assertEquals(3, createCoreNumberCalculator().add(1, 2), 0.001);
+        assertEquals(6, (int)createCoreNumberCalculator().add(new Integer(2), new Integer(4)).getValue(), 0.001);
     }
-
+    
     @Test
     public void substractDoubleDouble(){
-        assertEquals(-1.0, createCoreNumberCalculator().substract(1.0, 2.0), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Double(2.0), new Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void substractDoubleInteger(){
-        assertEquals(-1.0, createCoreNumberCalculator().substract(1.0, 2), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Double(2.0), new Integer(4)).getValue(), 0.001);
     }
 
     @Test
     public void substractIntegerDouble(){
-        assertEquals(-1.0, createCoreNumberCalculator().substract(1, 2.0), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Integer(2), new Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void substractIntegerIntger(){
-        assertEquals(-1, createCoreNumberCalculator().substract(1, 2), 0.001);
+        assertEquals(-2, (int) createCoreNumberCalculator().substract(new Integer(2), new Integer(4)).getValue(), 0.001);
     }
 }

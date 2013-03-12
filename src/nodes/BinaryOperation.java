@@ -1,6 +1,6 @@
 package nodes;
 
-import core.Calculator;
+import core.CalculatorFinder;
 import core.Node;
 import core.Operator;
 import core.Type;
@@ -23,7 +23,7 @@ public class BinaryOperation implements Node {
     public Type evaluate(){
         Type left = leftChild.evaluate();
         Type right = rightChild.evaluate();
-        return Calculator.solve(operator, new Type[]{left, right});
+        return CalculatorFinder.getInstance().solve(operator, new Type[]{left, right});
     }
 
     public Node getLeftChild(){

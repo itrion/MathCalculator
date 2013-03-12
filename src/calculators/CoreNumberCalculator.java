@@ -1,6 +1,7 @@
 package calculators;
 
 import annotations.Operation;
+import core.CalculatorFinder;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import types.Double;
@@ -14,13 +15,14 @@ public class CoreNumberCalculator implements NumberCalculator {
         methods = new HashMap<>();
         for (Method method : CoreNumberCalculator.class.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Operation.class)){
-                methods.put(getMethodSignature(method), method);
-            }
-                
+                final String methodSignature = getMethodSignature(method);
+                CalculatorFinder.getInstance().registerCalculator(methodSignature, CoreNumberCalculator.class);
+                methods.put(methodSignature, method);
+            }   
         }
     }
 
-    public static Method getMethod(String signature){
+    public static Method getMethodBySignature(String signature){
         return methods.get(signature);
     }
 
@@ -53,7 +55,7 @@ public class CoreNumberCalculator implements NumberCalculator {
     @Operation
     @Override
     public Integer add(Integer a, Integer b){
-        return new Integer(a.getValue() - b.getValue());
+        return new Integer(a.getValue() + b.getValue());
     }
 
     @Operation
@@ -126,10 +128,5 @@ public class CoreNumberCalculator implements NumberCalculator {
     @Override
     public Integer divide(Integer a, Integer b){
         return new Integer(a.getValue() / b.getValue());
-    }
-
-    @Override
-    public HashMap getMap(){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

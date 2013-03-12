@@ -1,10 +1,9 @@
 package calculators;
 
-import core.Mappable;
 import types.Double;
 import types.Integer;
 
-public interface NumberCalculator extends Mappable {
+public interface NumberCalculator{
     public Double add(Double a, Double b);
     public Double add(Double a, Integer b);
     public Double add(Integer a, Double b);

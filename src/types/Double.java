@@ -17,6 +17,4 @@ public class Double extends Type<java.lang.Double> implements Node{
     public String getName(){
         return "Double";
     }
-    
-    
 }

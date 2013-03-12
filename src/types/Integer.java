@@ -3,7 +3,7 @@ package types;
 import core.Node;
 import core.Type;
 
-public class Integer extends Type<java.lang.Integer> implements Node{
+public class Integer extends Type<java.lang.Integer> implements Node {
 
     public Integer(java.lang.Integer value){
         super(value);
@@ -13,8 +13,9 @@ public class Integer extends Type<java.lang.Integer> implements Node{
     public Type evaluate(){
         return this;
     }
-@Override
+
+    @Override
     public String getName(){
         return "Integer";
-    }    
+    }
 }
