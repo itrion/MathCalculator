@@ -1,7 +1,7 @@
 package calculators;
 
-import types.Double;
-import types.Integer;
+import nodes.types.Double;
+import nodes.types.Integer;
 
 public interface NumberCalculator extends Calculator{
     public Double add(Double a, Double b);

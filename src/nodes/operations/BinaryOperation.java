@@ -1,4 +1,4 @@
-package nodes;
+package nodes.operations;
 
 import core.CalculatorFinder;
 import core.Node;

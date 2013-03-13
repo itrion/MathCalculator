@@ -4,8 +4,8 @@ import annotations.Operation;
 import core.CalculatorFinder;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import types.Double;
-import types.Integer;
+import nodes.types.Double;
+import nodes.types.Integer;
 
 public class CoreNumberCalculator implements NumberCalculator {
 

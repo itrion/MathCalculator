@@ -12,21 +12,21 @@ public class CoreNumberCalculatorDivideTest {
 
     @Test
     public void divideDoubleDouble(){
-        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new types.Double(2.0), new types.Double(4.0)).getValue(), 0.001);
+        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new nodes.types.Double(2.0), new nodes.types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void divideDoubleInteger(){
-        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new types.Double(2.0), new types.Integer(4)).getValue(), 0.001);
+        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new nodes.types.Double(2.0), new nodes.types.Integer(4)).getValue(), 0.001);
     }
 
     @Test
     public void divideIntegerDouble(){
-        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new types.Integer(2), new types.Double(4.0)).getValue(), 0.001);
+        assertEquals(0.5, (double)createCoreNumberCalculator().divide(new nodes.types.Integer(2), new nodes.types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void divideIntegerIntger(){
-        assertEquals(0, (int)createCoreNumberCalculator().divide(new types.Integer(2), new types.Integer(4)).getValue(), 0.001);
+        assertEquals(0, (int)createCoreNumberCalculator().divide(new nodes.types.Integer(2), new nodes.types.Integer(4)).getValue(), 0.001);
     }
 }

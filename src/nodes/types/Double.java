@@ -1,4 +1,4 @@
-package types;
+package nodes.types;
 
 import core.Node;
 import core.Type;

@@ -3,8 +3,8 @@ package calculators.coreNumberCalculator;
 import calculators.CoreNumberCalculator;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import types.Double;
-import types.Integer;
+import nodes.types.Double;
+import nodes.types.Integer;
 
 public class CoreNumberCalculatorAddTest {
 
