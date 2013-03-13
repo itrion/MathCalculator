@@ -13,7 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.reflections.Reflections;
 
-public class AddBinaryOperationTest {
+public class SubstractBinaryOperationTest {
 
     @BeforeClass
     public static void init(){
@@ -28,38 +28,38 @@ public class AddBinaryOperationTest {
     }
 
     @Test
-    public void addRDoubleDoubleReturnsDouble(){
+    public void substractRDoubleDoubleReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
         binaryOperation.setLeftChild(new Double(3.0));
         binaryOperation.setRightChild(new Double(2.0));
-        binaryOperation.setOperator(Operator.ADD);
+        binaryOperation.setOperator(Operator.SUBSTRACT);
         assertEquals(Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
-    public void addRDoubleIntegerReturnsDouble(){
+    public void substractRDoubleIntegerReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
         binaryOperation.setLeftChild(new Double(3.0));
         binaryOperation.setRightChild(new Integer(2));
-        binaryOperation.setOperator(Operator.ADD);
+        binaryOperation.setOperator(Operator.SUBSTRACT);
         assertEquals(Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
-    public void addRIntegerDoubleReturnsDouble(){
+    public void substractRIntegerDoubleReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
         binaryOperation.setLeftChild(new Integer(3));
         binaryOperation.setRightChild(new Double(2.0));
-        binaryOperation.setOperator(Operator.ADD);
+        binaryOperation.setOperator(Operator.SUBSTRACT);
         assertEquals(Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
-    public void addIntegerIntegerReturnsInteger(){
+    public void substractIntegerIntegerReturnsInteger(){
         final BinaryOperation binaryOperation = new BinaryOperation();
         binaryOperation.setLeftChild(new Integer(3));
         binaryOperation.setRightChild(new Integer(2));
-        binaryOperation.setOperator(Operator.ADD);
+        binaryOperation.setOperator(Operator.SUBSTRACT);
         assertEquals(Integer.class, binaryOperation.evaluate().getClass());
     }
 }

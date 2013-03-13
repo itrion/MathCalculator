@@ -3,6 +3,8 @@ package core;
 public class Operator {
     public static final Operator ADD = new Operator("add", "+");
     public static final Operator SUBSTRACT = new Operator("substract", "-");
+    public static final Operator DIVIDE = new Operator("divide", "/");
+    public static final Operator MULTIPLY = new Operator("multiply", "*");
     
     private String name;
     private String symbol;

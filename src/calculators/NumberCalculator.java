@@ -3,7 +3,7 @@ package calculators;
 import types.Double;
 import types.Integer;
 
-public interface NumberCalculator{
+public interface NumberCalculator extends Calculator{
     public Double add(Double a, Double b);
     public Double add(Double a, Integer b);
     public Double add(Integer a, Double b);

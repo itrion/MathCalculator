@@ -47,7 +47,7 @@ public class CalculatorFinder {
             Class<? extends Calculator> calculator = calculators.get(signature);
             Method method = calculator.getMethod("getMethodBySignature", new Class<?>[]{String.class});
             return (Method) method.invoke(calculator.newInstance(), new Object[]{signature});
-        } catch (Exception e) {
+        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             Logger.getLogger(CalculatorFinder.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;

@@ -1,11 +1,12 @@
-package calculators;
+package calculators.coreNumberCalculator;
 
+import calculators.CoreNumberCalculator;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import types.Double;
 import types.Integer;
 
-public class CoreNumberCalculatorTest {
+public class CoreNumberCalculatorAddTest {
 
     private CoreNumberCalculator createCoreNumberCalculator(){
         return new CoreNumberCalculator();
@@ -29,25 +30,5 @@ public class CoreNumberCalculatorTest {
     @Test
     public void addIntegerIntger(){
         assertEquals(6, (int)createCoreNumberCalculator().add(new Integer(2), new Integer(4)).getValue(), 0.001);
-    }
-    
-    @Test
-    public void substractDoubleDouble(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Double(2.0), new Double(4.0)).getValue(), 0.001);
-    }
-
-    @Test
-    public void substractDoubleInteger(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Double(2.0), new Integer(4)).getValue(), 0.001);
-    }
-
-    @Test
-    public void substractIntegerDouble(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new Integer(2), new Double(4.0)).getValue(), 0.001);
-    }
-
-    @Test
-    public void substractIntegerIntger(){
-        assertEquals(-2, (int) createCoreNumberCalculator().substract(new Integer(2), new Integer(4)).getValue(), 0.001);
     }
 }

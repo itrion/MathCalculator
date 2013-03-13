@@ -6,14 +6,12 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nodes.BinaryOperation;
-import types.Double;
-import types.Integer;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.reflections.Reflections;
 
-public class AddBinaryOperationTest {
+public class DivideBinaryOperationTest {
 
     @BeforeClass
     public static void init(){
@@ -30,36 +28,36 @@ public class AddBinaryOperationTest {
     @Test
     public void addRDoubleDoubleReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
-        binaryOperation.setLeftChild(new Double(3.0));
-        binaryOperation.setRightChild(new Double(2.0));
-        binaryOperation.setOperator(Operator.ADD);
-        assertEquals(Double.class, binaryOperation.evaluate().getClass());
+        binaryOperation.setLeftChild(new types.Double(3.0));
+        binaryOperation.setRightChild(new types.Double(2.0));
+        binaryOperation.setOperator(Operator.DIVIDE);
+        assertEquals(types.Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
     public void addRDoubleIntegerReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
-        binaryOperation.setLeftChild(new Double(3.0));
-        binaryOperation.setRightChild(new Integer(2));
-        binaryOperation.setOperator(Operator.ADD);
-        assertEquals(Double.class, binaryOperation.evaluate().getClass());
+        binaryOperation.setLeftChild(new types.Double(3.0));
+        binaryOperation.setRightChild(new types.Integer(2));
+        binaryOperation.setOperator(Operator.DIVIDE);
+        assertEquals(types.Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
     public void addRIntegerDoubleReturnsDouble(){
         final BinaryOperation binaryOperation = new BinaryOperation();
-        binaryOperation.setLeftChild(new Integer(3));
-        binaryOperation.setRightChild(new Double(2.0));
-        binaryOperation.setOperator(Operator.ADD);
-        assertEquals(Double.class, binaryOperation.evaluate().getClass());
+        binaryOperation.setLeftChild(new types.Integer(3));
+        binaryOperation.setRightChild(new types.Double(2.0));
+        binaryOperation.setOperator(Operator.DIVIDE);
+        assertEquals(types.Double.class, binaryOperation.evaluate().getClass());
     }
 
     @Test
     public void addIntegerIntegerReturnsInteger(){
         final BinaryOperation binaryOperation = new BinaryOperation();
-        binaryOperation.setLeftChild(new Integer(3));
-        binaryOperation.setRightChild(new Integer(2));
-        binaryOperation.setOperator(Operator.ADD);
-        assertEquals(Integer.class, binaryOperation.evaluate().getClass());
+        binaryOperation.setLeftChild(new types.Integer(3));
+        binaryOperation.setRightChild(new types.Integer(2));
+        binaryOperation.setOperator(Operator.DIVIDE);
+        assertEquals(types.Integer.class, binaryOperation.evaluate().getClass());
     }
 }
