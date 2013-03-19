@@ -3,130 +3,104 @@ package calculators;
 import annotations.Operation;
 import core.CalculatorFinder;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import nodes.types.Double;
 import nodes.types.Integer;
 
-public class CoreNumberCalculator implements NumberCalculator {
-
-    private static final HashMap<String, Method> methods;
+public class CoreNumberCalculator extends Calculator {
 
     static {
-        methods = new HashMap<>();
-        for (Method method : CoreNumberCalculator.class.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(Operation.class)){
+        for (Method method : CoreNumberCalculator.class.getDeclaredMethods())
+            if (method.isAnnotationPresent(Operation.class)) {
                 final String methodSignature = getMethodSignature(method);
-                CalculatorFinder.getInstance().registerCalculator(methodSignature, CoreNumberCalculator.class);
-                methods.put(methodSignature, method);
-            }   
-        }
+                CalculatorFinder.getInstance().registerMethod(methodSignature, method);
+            }
     }
 
-    public static Method getMethodBySignature(String signature){
-        return methods.get(signature);
-    }
-
-    private static String getMethodSignature(Method method){
-        String signature="";
+    private static String getMethodSignature(Method method) {
+        String signature = "";
         signature += method.getName();
-        for (Class classs :method.getParameterTypes())
+        for (Class classs : method.getParameterTypes())
             signature += classs.getSimpleName();
         return signature;
     }
 
     @Operation
-    @Override
-    public Double add(Double a, Double b){
+    public Double add(Double a, Double b) {
         return new Double(a.getValue() + b.getValue());
     }
 
     @Operation
-    @Override
-    public Double add(Double a, Integer b){
+    public Double add(Double a, Integer b) {
         return new Double(a.getValue() + b.getValue());
     }
 
     @Operation
-    @Override
-    public Double add(Integer a, Double b){
+    public Double add(Integer a, Double b) {
         return new Double(a.getValue() + b.getValue());
     }
 
     @Operation
-    @Override
-    public Integer add(Integer a, Integer b){
+    public Integer add(Integer a, Integer b) {
         return new Integer(a.getValue() + b.getValue());
     }
 
     @Operation
-    @Override
-    public Double substract(Double a, Double b){
+    public Double substract(Double a, Double b) {
         return new Double(a.getValue() - b.getValue());
     }
 
     @Operation
-    @Override
-    public Double substract(Double a, Integer b){
+    public Double substract(Double a, Integer b) {
         return new Double(a.getValue() - b.getValue());
     }
 
     @Operation
-    @Override
-    public Double substract(Integer a, Double b){
+    public Double substract(Integer a, Double b) {
         return new Double(a.getValue() - b.getValue());
     }
 
     @Operation
-    @Override
-    public Integer substract(Integer a, Integer b){
+    public Integer substract(Integer a, Integer b) {
         return new Integer(a.getValue() - b.getValue());
     }
 
     @Operation
-    @Override
-    public Double multiply(Double a, Double b){
+    public Double multiply(Double a, Double b) {
         return new Double(a.getValue() * b.getValue());
     }
 
     @Operation
-    @Override
-    public Double multiply(Double a, Integer b){
+    public Double multiply(Double a, Integer b) {
         return new Double(a.getValue() * b.getValue());
     }
 
     @Operation
-    @Override
-    public Double multiply(Integer a, Double b){
+    public Double multiply(Integer a, Double b) {
         return new Double(a.getValue() * b.getValue());
     }
 
     @Operation
-    @Override
-    public Integer multiply(Integer a, Integer b){
+    public Integer multiply(Integer a, Integer b) {
         return new Integer(a.getValue() * b.getValue());
     }
 
     @Operation
-    @Override
-    public Double divide(Double a, Double b){
+    public Double divide(Double a, Double b) {
         return new Double(a.getValue() / b.getValue());
     }
 
     @Operation
-    @Override
-    public Double divide(Double a, Integer b){
+    public Double divide(Double a, Integer b) {
         return new Double(a.getValue() / b.getValue());
     }
 
     @Operation
-    @Override
-    public Double divide(Integer a, Double b){
+    public Double divide(Integer a, Double b) {
         return new Double(a.getValue() / b.getValue());
     }
 
     @Operation
-    @Override
-    public Integer divide(Integer a, Integer b){
-        return new Integer(a.getValue() / b.getValue());
+    public Double divide(Integer a, Integer b) {
+        return new Double(java.lang.Double.valueOf(a.getValue())/java.lang.Double.valueOf(b.getValue()));
     }
 }

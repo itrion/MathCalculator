@@ -1,5 +1,5 @@
 package calculators;
 
-public interface Calculator {
+public class Calculator {
 
 }

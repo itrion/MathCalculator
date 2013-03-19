@@ -27,6 +27,6 @@ public class CoreNumberCalculatorDivideTest {
 
     @Test
     public void divideIntegerIntger(){
-        assertEquals(0, (int)createCoreNumberCalculator().divide(new nodes.types.Integer(2), new nodes.types.Integer(4)).getValue(), 0.001);
+        assertEquals(0.5, createCoreNumberCalculator().divide(new nodes.types.Integer(2), new nodes.types.Integer(4)).getValue(), 0.001);
     }
 }

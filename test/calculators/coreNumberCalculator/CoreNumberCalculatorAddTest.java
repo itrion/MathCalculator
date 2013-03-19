@@ -1,10 +1,10 @@
 package calculators.coreNumberCalculator;
 
 import calculators.CoreNumberCalculator;
-import static org.junit.Assert.*;
-import org.junit.Test;
 import nodes.types.Double;
 import nodes.types.Integer;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class CoreNumberCalculatorAddTest {
 
