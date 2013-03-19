@@ -2,11 +2,12 @@ package mathcalculator;
 
 import calculators.NumberCalculator;
 import core.Operator;
+import core.OperatorList;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import nodes.operations.BinaryOperation;
 import org.reflections.Reflections;
+import parsers.InfixParser;
 
 public class MathCalculator {
 
@@ -22,10 +23,13 @@ public class MathCalculator {
             
     }
     public static void main(String[] args){
-        BinaryOperation binaryOperation = new BinaryOperation();
-        binaryOperation.setOperator(Operator.ADD);
-        binaryOperation.setLeftChild(new nodes.types.Double(2.0));
-        binaryOperation.setRightChild(new nodes.types.Double(1.0));
-        System.out.println(binaryOperation.evaluate().getValue());
+        InfixParser parser = new InfixParser("354+201*5");
+        OperatorList operators = new OperatorList();
+        operators.add(Operator.ADD);
+        operators.add(Operator.DIVIDE);
+        operators.add(Operator.MULTIPLY);
+        operators.add(Operator.SUBSTRACT);
+        parser.setOperators(operators);
+        parser.parse();
     }
 }

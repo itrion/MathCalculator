@@ -2,16 +2,24 @@ package parser;
 
 import core.Node;
 import core.Operator;
+import core.OperatorList;
 import junit.framework.Assert;
 import nodes.operations.BinaryOperation;
-import org.junit.Test;
 import nodes.types.Integer;
-import parsers.StringParser;
+import org.junit.Test;
+import parsers.InfixParser;
 
-public class StringParserTest {
+public class InfixParserTest {
+    
     @Test
     public void addStringParsertTest(){
-        StringParser parser = new StringParser("3+2");
+        InfixParser parser = new InfixParser("3+2");
+        OperatorList operators = new OperatorList();
+        operators.add(Operator.ADD);
+        operators.add(Operator.DIVIDE);
+        operators.add(Operator.MULTIPLY);
+        operators.add(Operator.SUBSTRACT);
+        parser.setOperators(operators);
         Node result = parser.parse();
         Assert.assertTrue(result instanceof BinaryOperation);
         
