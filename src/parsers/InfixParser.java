@@ -5,6 +5,7 @@ import core.Operator;
 import core.OperatorList;
 import core.Parser;
 import java.util.Stack;
+import nodes.Constant;
 import nodes.operations.BinaryOperation;
 
 public class InfixParser implements Parser {
@@ -124,11 +125,12 @@ public class InfixParser implements Parser {
     }
 
     private boolean checkDouble(String token) {
-       return token.contains(".");
+        return token.contains(".");
     }
 
     private Node toNumber(String token) {
-        if (checkDouble(token)) return new nodes.types.Double(Double.valueOf(token));
-        else return new nodes.types.Integer(Integer.valueOf(token));
+        if (checkDouble(token))
+            return new Constant(new types.Double(Double.valueOf(token)));
+        else return new Constant(new types.Integer(Integer.valueOf(token)));
     }
 }

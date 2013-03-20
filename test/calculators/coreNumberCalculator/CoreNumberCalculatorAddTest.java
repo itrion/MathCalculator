@@ -1,8 +1,8 @@
 package calculators.coreNumberCalculator;
 
 import calculators.CoreNumberCalculator;
-import nodes.types.Double;
-import nodes.types.Integer;
+import types.Double;
+import types.Integer;
 import static org.junit.Assert.*;
 import org.junit.Test;
 

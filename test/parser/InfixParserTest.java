@@ -5,10 +5,10 @@ import core.Operator;
 import core.OperatorList;
 import junit.framework.Assert;
 import nodes.operations.BinaryOperation;
-import nodes.types.Double;
-import nodes.types.Integer;
 import org.junit.Test;
 import parsers.InfixParser;
+import types.Double;
+import types.Integer;
 
 public class InfixParserTest {
 
@@ -26,8 +26,8 @@ public class InfixParserTest {
         Assert.assertTrue(result instanceof BinaryOperation);
         BinaryOperation operation = (BinaryOperation) result;
         Assert.assertEquals(Operator.ADD.getName(), operation.getOperator().getName());
-        Assert.assertEquals(Integer.class, operation.getLeftChild().getClass());
-        Assert.assertEquals(Integer.class, operation.getRightChild().getClass());
+        Assert.assertEquals(Integer.class, operation.getLeftChild().evaluate().getClass());
+        Assert.assertEquals(Integer.class, operation.getRightChild().evaluate().getClass());
         Assert.assertEquals(3, operation.getLeftChild().evaluate().getValue());
         Assert.assertEquals(2, operation.getRightChild().evaluate().getValue());
         Assert.assertEquals(5, operation.evaluate().getValue());
@@ -40,8 +40,8 @@ public class InfixParserTest {
         Assert.assertTrue(result instanceof BinaryOperation);
         BinaryOperation operation = (BinaryOperation) result;
         Assert.assertEquals(Operator.SUBSTRACT.getName(), operation.getOperator().getName());
-        Assert.assertEquals(Integer.class, operation.getLeftChild().getClass());
-        Assert.assertEquals(Integer.class, operation.getRightChild().getClass());
+        Assert.assertEquals(Integer.class, operation.getLeftChild().evaluate().getClass());
+        Assert.assertEquals(Integer.class, operation.getRightChild().evaluate().getClass());
         Assert.assertEquals(3, operation.getLeftChild().evaluate().getValue());
         Assert.assertEquals(2, operation.getRightChild().evaluate().getValue());
         Assert.assertEquals(1, operation.evaluate().getValue());
@@ -54,8 +54,8 @@ public class InfixParserTest {
         Assert.assertTrue(result instanceof BinaryOperation);
         BinaryOperation operation = (BinaryOperation) result;
         Assert.assertEquals(Operator.MULTIPLY.getName(), operation.getOperator().getName());
-        Assert.assertEquals(Integer.class, operation.getLeftChild().getClass());
-        Assert.assertEquals(Integer.class, operation.getRightChild().getClass());
+        Assert.assertEquals(Integer.class, operation.getLeftChild().evaluate().getClass());
+        Assert.assertEquals(Integer.class, operation.getRightChild().evaluate().getClass());
         Assert.assertEquals(3, operation.getLeftChild().evaluate().getValue());
         Assert.assertEquals(2, operation.getRightChild().evaluate().getValue());
         Assert.assertEquals(6, operation.evaluate().getValue());
@@ -68,8 +68,8 @@ public class InfixParserTest {
         Assert.assertTrue(result instanceof BinaryOperation);
         BinaryOperation operation = (BinaryOperation) result;
         Assert.assertEquals(Operator.DIVIDE.getName(), operation.getOperator().getName());
-        Assert.assertEquals(Integer.class, operation.getLeftChild().getClass());
-        Assert.assertEquals(Integer.class, operation.getRightChild().getClass());
+        Assert.assertEquals(Integer.class, operation.getLeftChild().evaluate().getClass());
+        Assert.assertEquals(Integer.class, operation.getRightChild().evaluate().getClass());
         Assert.assertEquals(3, operation.getLeftChild().evaluate().getValue());
         Assert.assertEquals(2, operation.getRightChild().evaluate().getValue());
         Assert.assertEquals(1.5, operation.evaluate().getValue());
@@ -79,14 +79,14 @@ public class InfixParserTest {
     public void integerTest() {
         InfixParser parser = getParser("3");
         Node parse = parser.parse();
-        Assert.assertEquals(Integer.class, parse.getClass());
+        Assert.assertEquals(Integer.class, parse.evaluate().getClass());
     }
 
     @Test
     public void doubleTest() {
         InfixParser parser = getParser("3.0");
         Node parse = parser.parse();
-        Assert.assertEquals(Double.class, parse.getClass());
+        Assert.assertEquals(Double.class, parse.evaluate().getClass());
     }
 
     @Test

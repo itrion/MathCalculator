@@ -12,21 +12,21 @@ public class CoreNumberCalculatorMultiplyTest {
 
     @Test
     public void multiplyDoubleDouble(){
-        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new nodes.types.Double(2.0), new nodes.types.Double(4.0)).getValue(), 0.001);
+        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new types.Double(2.0), new types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void multiplyDoubleInteger(){
-        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new nodes.types.Double(2.0), new nodes.types.Integer(4)).getValue(), 0.001);
+        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new types.Double(2.0), new types.Integer(4)).getValue(), 0.001);
     }
 
     @Test
     public void multiplyIntegerDouble(){
-        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new nodes.types.Integer(2), new nodes.types.Double(4.0)).getValue(), 0.001);
+        assertEquals(8.0, (double)createCoreNumberCalculator().multiply(new types.Integer(2), new types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void multiplyIntegerIntger(){
-        assertEquals(8, (int)createCoreNumberCalculator().multiply(new nodes.types.Integer(2), new nodes.types.Integer(4)).getValue(), 0.001);
+        assertEquals(8, (int)createCoreNumberCalculator().multiply(new types.Integer(2), new types.Integer(4)).getValue(), 0.001);
     }
 }

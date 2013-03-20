@@ -12,21 +12,21 @@ public class CoreNumberCalculatorSubstractTest {
 
     @Test
     public void substractDoubleDouble(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new nodes.types.Double(2.0), new nodes.types.Double(4.0)).getValue(), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new types.Double(2.0), new types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void substractDoubleInteger(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new nodes.types.Double(2.0), new nodes.types.Integer(4)).getValue(), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new types.Double(2.0), new types.Integer(4)).getValue(), 0.001);
     }
 
     @Test
     public void substractIntegerDouble(){
-        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new nodes.types.Integer(2), new nodes.types.Double(4.0)).getValue(), 0.001);
+        assertEquals(-2.0, (double) createCoreNumberCalculator().substract(new types.Integer(2), new types.Double(4.0)).getValue(), 0.001);
     }
 
     @Test
     public void substractIntegerIntger(){
-        assertEquals(-2, (int) createCoreNumberCalculator().substract(new nodes.types.Integer(2), new nodes.types.Integer(4)).getValue(), 0.001);
+        assertEquals(-2, (int) createCoreNumberCalculator().substract(new types.Integer(2), new types.Integer(4)).getValue(), 0.001);
     }
 }

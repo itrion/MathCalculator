@@ -3,8 +3,8 @@ package calculators;
 import annotations.Operation;
 import core.CalculatorFinder;
 import java.lang.reflect.Method;
-import nodes.types.Double;
-import nodes.types.Integer;
+import types.Double;
+import types.Integer;
 
 public class CoreNumberCalculator extends Calculator {
 
