@@ -1,5 +1,6 @@
 package core;
 
+import annotations.Operation;
 import calculators.Calculator;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,29 +13,19 @@ import org.reflections.Reflections;
 
 public class CalculatorFinder {
 
-    private static CalculatorFinder instance = null;
-    private static HashMap<String, Method> registeredCalculators;
+    private static HashMap<String, Method> registeredMethods;
 
     static {
-        try {
-            Reflections reflections = new Reflections("calculators");
-            Set<Class<? extends Calculator>> calculators = reflections.getSubTypesOf(Calculator.class);
-            for (Class calculator : calculators)
-                calculator.newInstance();
-        } catch (InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(CalculatorFinder.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        registeredMethods = new LinkedHashMap<>();
+        Reflections reflections = new Reflections("calculators");
+        Set<Class<? extends Calculator>> calculators = reflections.getSubTypesOf(Calculator.class);
+        for (Class calculator : calculators)
+            registerCalculatorMethods(calculator);
     }
 
-    public static CalculatorFinder getInstance() {
-        if (instance != null) return instance;
-        else return instance = new CalculatorFinder();
-
-    }
-
-    public Type solve(Operator operator, Type[] parameters) {
+    public static Type solve(Operator operator, Type[] parameters) {
         try {
-            final String signature = getSignature(operator, parameters);
+            String signature = getOperationSignature(operator, parameters);
             Method operationMethod = getOperationMethod(signature);
             return (Type) operationMethod.invoke(operationMethod.getDeclaringClass().newInstance(), (Object[]) parameters);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException ex) {
@@ -42,21 +33,32 @@ public class CalculatorFinder {
         }
         return null;
     }
+    
+    private static void registerCalculatorMethods(Class calculator) {
+        for (Method method : calculator.getDeclaredMethods())
+            if (method.isAnnotationPresent(Operation.class))
+                registerMethod(getMethodSignature(method), method);
+    }
 
-    private String getSignature(Operator operator, Type[] parameters) {
+    private static String getMethodSignature(Method method) {
+        String signature = method.getName();
+        for (Class classs : method.getParameterTypes())
+            signature += classs.getSimpleName();
+        return signature;
+    }
+
+    private static String getOperationSignature(Operator operator, Type[] parameters) {
         String signature = operator.getName();
         for (Type type : parameters)
             signature += type.getName();
         return signature;
     }
 
-    public void registerMethod(String signature, Method method) {
-        if (registeredCalculators == null)
-            registeredCalculators = new LinkedHashMap<>();
-        registeredCalculators.put(signature, method);
+    public static void registerMethod(String signature, Method method) {
+        registeredMethods.put(signature, method);
     }
 
-    private Method getOperationMethod(String signature) {
-        return registeredCalculators.get(signature);
+    private static Method getOperationMethod(String signature) {
+        return registeredMethods.get(signature);
     }
 }

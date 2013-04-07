@@ -13,4 +13,9 @@ public abstract class Type<T> {
     }
 
     public abstract String getName();
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
 }

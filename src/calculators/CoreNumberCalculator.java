@@ -1,28 +1,10 @@
 package calculators;
 
 import annotations.Operation;
-import core.CalculatorFinder;
-import java.lang.reflect.Method;
 import types.Double;
 import types.Integer;
 
 public class CoreNumberCalculator extends Calculator {
-
-    static {
-        for (Method method : CoreNumberCalculator.class.getDeclaredMethods())
-            if (method.isAnnotationPresent(Operation.class)) {
-                final String methodSignature = getMethodSignature(method);
-                CalculatorFinder.getInstance().registerMethod(methodSignature, method);
-            }
-    }
-
-    private static String getMethodSignature(Method method) {
-        String signature = "";
-        signature += method.getName();
-        for (Class classs : method.getParameterTypes())
-            signature += classs.getSimpleName();
-        return signature;
-    }
 
     @Operation
     public Double add(Double a, Double b) {
@@ -101,6 +83,6 @@ public class CoreNumberCalculator extends Calculator {
 
     @Operation
     public Double divide(Integer a, Integer b) {
-        return new Double(java.lang.Double.valueOf(a.getValue())/java.lang.Double.valueOf(b.getValue()));
+        return new Double(java.lang.Double.valueOf(a.getValue()) / java.lang.Double.valueOf(b.getValue()));
     }
 }

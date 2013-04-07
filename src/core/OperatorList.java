@@ -10,9 +10,15 @@ public class OperatorList extends ArrayList<Operator>{
         return false;
     }
     
-    public Operator getOperatorForSymbol (String symbol){
+    public Operator getOperatorBySymbol (String symbol){
         for (Operator operator:this)
             if(operator.getSymbol().equals(symbol)) return operator;
+        return null;
+    }
+    
+    public Operator getOperatorByName (String name){
+        for (Operator operator:this)
+            if(operator.getName().equals(name)) return operator;
         return null;
     }
 }

@@ -71,7 +71,7 @@ public class InfixParser implements Parser {
     }
 
     private Operator getOperator(String token) {
-        return operators.getOperatorForSymbol(token);
+        return operators.getOperatorBySymbol(token);
     }
 
     private Node getNode(Operator popedOperator) {
